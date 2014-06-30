@@ -72,6 +72,8 @@ function enemies.checkAlive()
 
 				explodeSound:play()
 
+				score = score + 1
+
 			end
 
 		end
