@@ -24,7 +24,7 @@ function love.draw()
 	love.graphics.draw(background, 0, 0)
 	love.graphics.print("FPS: "..tostring(love.timer.getFPS( )), 10, 10)
 	love.graphics.print("Score: "..tostring(score), 10, 30)
-	
+
 	DRAW_SHIP()
 	DRAW_BULLETS()
 	DRAW_ENEMIES()

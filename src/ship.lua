@@ -4,6 +4,13 @@ ship = {}
 fireWait = 5
 fireTime = 0
 
+pi = love.graphics.newImage("images/thrust.png")
+ps = love.graphics.newParticleSystem(pi, 2)
+ps:setSpeed(1, 3)
+ps:setEmissionRate(35)
+ps:setSizes(1,2)
+ps:setSpinVariation(.5)
+
 function ship.load()
 	ship.image = love.graphics.newImage("images/ship.png")
 	ship.x = 50
@@ -62,8 +69,10 @@ function UPDATE_SHIP(dt)
 	ship.move(dt)
 	ship.bounds()
 	ship.fire()
+	ps:update(dt)
 end
 
 function DRAW_SHIP()
 	love.graphics.draw(ship.image, ship.x, ship.y)
+	love.graphics.draw(ps, ship.x-15, ship.y - 3 + ship.image:getHeight()/2)
 end
