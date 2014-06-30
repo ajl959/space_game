@@ -6,7 +6,7 @@ function love.load()
 
 	ship.load()
 
-	background = love.graphics.newImage("background.jpg")
+	background = love.graphics.newImage("images/background.jpg")
 
 end
 function love.update(dt)

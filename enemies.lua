@@ -5,9 +5,10 @@ explosions = {}
 
 enemyCounter = 0
 
-enemyImage = love.graphics.newImage("enemy.png")
-enemyExplode = love.graphics.newImage("explosion.png")
-explodeSound = love.audio.newSource("explosion.ogg", "static")
+enemyImage = love.graphics.newImage("images/enemy.png")
+enemyExplode = love.graphics.newImage("images/explosion.png")
+
+explodeSound = love.audio.newSource("sounds/explosion.ogg", "static")
 
 math.randomseed(os.time())
 
@@ -16,7 +17,7 @@ function enemies.addNew()
 	if enemyCounter > 125 then
 
 		local r = math.random()
-		local yRand = love.graphics.getHeight() * r
+		local yRand = (love.graphics.getHeight() - enemyImage:getHeight()) * r
 
 		table.insert(enemies, {
 				x = love.graphics.getWidth() + 10,

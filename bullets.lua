@@ -3,7 +3,7 @@ bullets = {}
 
 bulletVel = 500
 
-bulletSound = love.audio.newSource("fire.ogg", "static")
+bulletSound = love.audio.newSource("sounds/fire.ogg", "static")
 
 function bullets.addBullet(xPos, yPos)
 

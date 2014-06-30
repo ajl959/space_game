@@ -5,7 +5,7 @@ fireWait = 5
 fireTime = 0
 
 function ship.load()
-	ship.image = love.graphics.newImage("ship.png")
+	ship.image = love.graphics.newImage("images/ship.png")
 	ship.x = 50
 	ship.y = 200
 	ship.yvel = 0
