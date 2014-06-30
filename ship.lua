@@ -1,8 +1,6 @@
 
 ship = {}
 
-bullets = {}
-
 fireWait = 5
 fireTime = 0
 
@@ -27,40 +25,21 @@ function ship.move(dt)
 end
 
 function ship.fire()
-	if love.keyboard.isDown('w') then
+	if love.keyboard.isDown(' ') then
 
 		if fireTime > fireWait then
-			table.insert(bullets, {
-				x = ship.x + ship.image:getWidth(),
-				y = ship.y + ship.image:getHeight() / 2,
-				xvel = 500
-			})
+
+			bullets.addBullet(ship.x + ship.image:getWidth(), 
+				ship.y + ship.image:getHeight() / 2)
+
 			fireTime = 0
+
 		else
 			fireTime = fireTime + 1
 		end
 
 	end
 end
-
-function ship.bulletUpdate(dt)
-	local i, o
-	for i, o in ipairs(bullets) do
-		o.x = o.x + o.xvel * dt
-		if (o.x < -10) or (o.x > love.graphics.getWidth() + 10) then
-			table.remove(bullets, i)
-		end
-	end
-end
-
-function ship.bulletDraw()
-	love.graphics.setLineWidth(3)
-	local i, o
-	for i, o in ipairs(bullets) do
-		--love.graphics.circle( "fill", o.x, o.y, 2, 6)
-		love.graphics.line(o.x, o.y, o.x+2, o.y)
-	end
-end	
 
 function ship.bounds()
 	if ship.y < 0 then
@@ -83,10 +62,8 @@ function UPDATE_SHIP(dt)
 	ship.move(dt)
 	ship.bounds()
 	ship.fire()
-	ship.bulletUpdate(dt)
 end
 
 function DRAW_SHIP()
 	love.graphics.draw(ship.image, ship.x, ship.y)
-	ship.bulletDraw()
 end
